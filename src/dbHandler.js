@@ -1,31 +1,12 @@
 const fs = require("fs")
+const databases = require(__dirname + "/../config/databases.json")
 
 class db {
     constructor(name) {
+        this.dbName = name
         this.path = __dirname + "/../db/" + name + ".json"
         if (!fs.existsSync(this.path)) this.initDB()
     }
-
-    //TODO
-    // initDB(path) {
-    //     let db;
-    //     let structure = this.getStructure(path)
-    //     if (structure.type === "object") db = {}
-    //     if (structure.type === "list") db = []
-    //      -
-    //     if (structure.type === "object") {
-    //         for (const childName of structure.children) {
-    //             db[childName] = this.initDB(path + "/" + childName)
-    //         }
-    //     }
-    //     if (structure.type === "list") {
-    //      -
-    //     }
-    //      -
-    //     if (this.getStructure().type === "value") db = []
-    //      -
-    //     return db
-    // }
 
     //path: The path in the object where you want to paste the data.
     //data: The data that will be pasted inside the object.
@@ -59,6 +40,8 @@ class db {
         return obj;
     }
 
+
+    //path: The path to the data in the object you want to get
     readData(path) {
         let object = JSON.parse(fs.readFileSync(this.path, {encoding: "utf8"}))
         let parts = path.split("/")
@@ -67,5 +50,13 @@ class db {
             current = current[part]
         }
         return current
+    }
+
+    initDB() {
+        if (databases[this.dbName].type === "object") {
+            fs.writeFileSync(this.path, "{}")
+        } else {
+            fs.writeFileSync(this.path, "[]")
+        }
     }
 }
