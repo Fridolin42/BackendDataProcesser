@@ -1,0 +1,11 @@
+<!DOCTYPE DBBP>
+<DBBP type="object">
+    <city type="object">
+        <id type="object">
+            <id type="value"/>
+            <title type="value"/>
+            <description type="value"/>
+            <points type="value"/>
+        </id>
+    </city>
+</DBBP>

@@ -1,0 +1,14 @@
+<!DOCTYPE DBBP>
+<DBBP type="object">
+    <id type="object">
+        <id type="value"/>
+        <username type="value"/>
+        <email type="value"/>
+        <password type="value"/>
+        <exercises type="list">
+            <name type="value"/>
+            <points type="value"/>
+            <id type="value"/>
+        </exercises>
+    </id>
+</DBBP>

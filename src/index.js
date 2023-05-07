@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser")
 const helmet = require("helmet")
 //config files
 const webservice = require(__dirname + "/../config/webservice.json")
+const databases = require(__dirname + "/../config/databases.json")
 
 //middlewares
 //middlewares from libs
@@ -17,6 +18,16 @@ app.use(cookieParser())
 
 //config
 app.set("view engine", "ejs")
+
+//read databases config
+for (const database of databases) {
+    for (const entrypoint of database.entrypoint) {
+        const path = entrypoint.path
+        const method = entrypoint.method
+        const permission = entrypoint.permission
+        const data = entrypoint.data
+    }
+}
 
 //404
 app.all("/", (req, res) => {
