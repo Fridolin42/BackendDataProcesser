@@ -1,0 +1,25 @@
+{
+  "name": "backenddataprocesser",
+  "version": "1.0.0",
+  "description": "An app for providing data",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fridolin42/BackendDataProcesser.git"
+  },
+  "author": "Fridolin42",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fridolin42/BackendDataProcesser/issues"
+  },
+  "homepage": "https://github.com/Fridolin42/BackendDataProcesser#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0"
+  }
+}
