@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const users = require("./users")
 module.exports = class Entrypoint {
     constructor(path, method, permission, exercise) {
         this.path = path
@@ -38,9 +39,9 @@ module.exports = class Entrypoint {
         const permission = this.permission
         if (permission === "0") return true
         if (permission === "login") {
-            const username = req.cookies.username
+            const email = req.cookies.email
             const password = req.cookies.password
-            //TODO new user
+            return users.login(email, password)
         }
     }
 }
