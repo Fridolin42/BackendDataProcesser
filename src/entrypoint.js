@@ -1,11 +1,11 @@
 const express = require("express")
 const router = express.Router()
 module.exports = class Entrypoint {
-    constructor(path, method, db, data) {
+    constructor(path, method, permission, exercise) {
         this.path = path
         this.method = method
-        this.db = db
-        this.data = data
+        this.permission = permission
+        this.exercise = exercise
         switch (method) {
             case "get":
                 router.get(path, this.entrypoint);
@@ -30,7 +30,17 @@ module.exports = class Entrypoint {
     }
 
     entrypoint(req, res) {
-        const db = require(__dirname + "/../" + this.db)
-        // const folders =
+        const authorised = this.checkPermission(req)
+        if (!authorised) return res.send({"status": "failed"})
+    }
+
+    checkPermission(req) {
+        const permission = this.permission
+        if (permission === "0") return true
+        if (permission === "login") {
+            const username = req.cookies.username
+            const password = req.cookies.password
+            //TODO new user
+        }
     }
 }

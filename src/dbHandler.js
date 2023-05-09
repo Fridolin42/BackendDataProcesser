@@ -1,7 +1,8 @@
 const fs = require("fs")
 const databases = require(__dirname + "/../config/databases.json")
 
-class db {
+module.exports = class db {
+    //name of db
     constructor(name) {
         this.dbName = name
         this.path = __dirname + "/../db/" + name + ".json"
@@ -53,7 +54,7 @@ class db {
     }
 
     initDB() {
-        if (databases[this.dbName].type === "object") {
+        if (databases.db[this.dbName].type === "object") {
             fs.writeFileSync(this.path, "{}")
         } else {
             fs.writeFileSync(this.path, "[]")

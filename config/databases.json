@@ -1,3 +1,17 @@
 {
-  "exercises": "object"
+  "users": {
+    "login": [
+      "password",
+      "email"
+    ],
+    "signup": [
+      "username"
+    ],
+    "values": {
+      "points": 0
+    }
+  },
+  "db": {
+    "exercises": "object"
+  }
 }

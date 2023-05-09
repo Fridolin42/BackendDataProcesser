@@ -1,0 +1,45 @@
+{
+  "/api/users/login": {
+    "method": "post",
+    "permission": "0",
+    "request": {
+      "body": [
+        "email",
+        "password"
+      ]
+    },
+    "login": {
+      "email": "body.email",
+      "password": "body.password",
+      "redirect": "/"
+    }
+  },
+  "/api/users/signup": {
+    "method": "post",
+    "permission": "0",
+    "request": {
+      "body": [
+        "username",
+        "email",
+        "password"
+      ]
+    },
+    "signup": {
+      "username": "body.username",
+      "email": "body.email",
+      "password": "body.password",
+      "redirect": "/"
+    }
+  },
+  "/api/users/info": {
+    "method": "get",
+    "permission": "login",
+    "response": {
+      "users[cookie.email]": [
+        "username",
+        "email",
+        "exercises"
+      ]
+    }
+  }
+}
