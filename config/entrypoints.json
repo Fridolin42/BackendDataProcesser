@@ -1,45 +1,31 @@
 {
-  "/api/users/login": {
-    "method": "post",
-    "permission": "0",
-    "request": {
-      "body": [
-        "email",
-        "password"
-      ]
+  "endpoints": [
+    {
+      "url": "/api/users/login",
+      "httpMethod": "post",
+      "requiredPermission": "none",
+      "function": "login"
     },
-    "login": {
-      "email": "body.email",
-      "password": "body.password",
-      "redirect": "/"
-    }
-  },
-  "/api/users/signup": {
-    "method": "post",
-    "permission": "0",
-    "request": {
-      "body": [
-        "username",
-        "email",
-        "password"
-      ]
+    {
+      "url": "/api/users/signup",
+      "httpMethod": "post",
+      "requiredPermission": "none",
+      "function": "signup"
     },
-    "signup": {
-      "username": "body.username",
-      "email": "body.email",
-      "password": "body.password",
-      "redirect": "/"
+    {
+      "url": "/api/users/info",
+      "httpMethod": "get",
+      "requiredPermission": "login",
+      "function": "getUserInfo()"
     }
-  },
-  "/api/users/info": {
-    "method": "get",
-    "permission": "login",
-    "response": {
-      "users[cookie.email]": [
-        "username",
-        "email",
-        "exercises"
-      ]
+  ],
+  "responses": {
+    "getUserInfo": {
+      "users[email:*email]": {
+        "username": "username",
+        "email": "email",
+        "exercises": "exercise"
+      }
     }
   }
 }
